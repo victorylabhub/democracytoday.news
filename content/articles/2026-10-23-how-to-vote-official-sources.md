@@ -26,7 +26,7 @@ sources:
     accessed: 2026-10-23
 ---
 
-The general election is Tuesday, Nov. 3, 2026. In the United States, elections are run by states and local governments, not by the federal government, so the rules that apply to you depend on where you live. The surest way to get them right is to go directly to official sources.
+The general election is Tuesday, Nov. 3, 2026. In the United States, each state and territory administers its own elections, [according to the U.S. Election Assistance Commission](https://www.eac.gov/voters/register-and-vote-in-your-state), so the rules that apply to you depend on where you live. Official state and local election offices are the authoritative source for those rules.
 
 ## Start with vote.gov
 
@@ -34,7 +34,7 @@ The general election is Tuesday, Nov. 3, 2026. In the United States, elections a
 
 ## Check your state's rules
 
-The U.S. Election Assistance Commission's [Register and Vote in Your State](https://www.eac.gov/voters/register-and-vote-in-your-state) page links to every state and territory. For each one, it points you to the state election office, a directory of local election offices, instructions for registering and checking your status, and the ways you can cast a ballot. The commission notes that its summaries are drawn from state websites and advises voters to confirm details with their state and local election offices, because timelines can change.
+The U.S. Election Assistance Commission's [Register and Vote in Your State](https://www.eac.gov/voters/register-and-vote-in-your-state) page covers every state, the District of Columbia and four U.S. territories. For each one, it points you to the state election office, a directory of local election offices, instructions for registering and checking your status, and the ways you can cast a ballot. The commission notes that its summaries are drawn from state websites and advises voters to confirm details with linked state and local sources to make sure registration information and timelines are up to date.
 
 ## Know your deadline
 
@@ -42,7 +42,7 @@ Every state sets its own voter registration deadline, and it can fall as much as
 
 ## On Election Day
 
-Polling hours, identification requirements and the location of your polling place are set by your state and county, and polling places can change between elections. Confirm yours with your local election office before you go. If you run into a problem at the polls, ask a poll worker first, and contact your local or state election office.
+Polling hours and identification requirements are set by state law, and polling places are assigned by local election officials and can change between elections. Confirm yours with your local election office before you go. If you run into a problem at the polls, ask a poll worker first, and contact your local or state election office.
 
 ## Be careful with what you read online
 

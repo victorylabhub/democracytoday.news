@@ -15,7 +15,7 @@ These standards apply to everything Democracy Today publishes.
 
 ## News and opinion
 
-News reporting and opinion are separate. Editorials, columns, guest essays and other pieces that argue a point of view are labeled as opinion. Essays in our Ideas and Essays sections are signed and reflect the views of their authors.
+News reporting and opinion are separate. Editorials, columns, guest essays and other pieces that argue a point of view are labeled as opinion. Essays in our Ideas and Essays sections are signed. Pieces signed by Democracy Today Editorial reflect the views of the editorial staff; pieces signed by an individual reflect that author's views.
 
 ## Elections
 

@@ -13,11 +13,11 @@ image_credit: Pexels
 sources: []
 ---
 
-Democracy Today begins publishing days before a national election, at a moment when many Americans say they no longer know whom to believe. We do not think the answer to that problem is another loud voice. We think it is a simple, demanding discipline, practiced every day and in public.
+Democracy Today begins publishing days before a national election, at a moment of deep distrust in news and in public institutions. We do not think the answer to that problem is another loud voice. We think it is a simple, demanding discipline, practiced every day and in public.
 
 That discipline starts with showing our work. Every news story we publish carries a byline and a date. Every factual claim that matters links to the place it came from — a court record, a government data release, a published study, an on-the-record interview — so that readers can check it themselves. When we cannot confirm something, we will say so, or we will leave it out.
 
-It continues with keeping opinion where it belongs. Pieces like this one, which argue a point of view, are labeled as opinion and kept separate from our news reporting. The Opinion and Ideas sections exist so that arguments can be made openly, by people who sign their names to them, and judged on their merits.
+It continues with keeping opinion where it belongs. Pieces like this one, which argue a point of view, are labeled as opinion and kept separate from our news reporting. The Opinion and Ideas sections exist so that arguments can be made openly, by people and institutions that put their names to them, and judged on their merits.
 
 It means correcting our mistakes where readers can see them. When we get something wrong, we will fix it, note the correction at the bottom of the story with the date and time, and explain what changed.
 

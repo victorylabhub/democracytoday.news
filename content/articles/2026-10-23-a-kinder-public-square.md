@@ -14,7 +14,7 @@ image_credit: Democracy Today
 sources: []
 ---
 
-We do not inherit a kinder public square. We build it, practice by practice, in places ordinary and unglamorous: a school board meeting, a group chat, a line at the polls, the comment section beneath a story like this one.
+We do not inherit a kinder public square. We build it, practice by practice, in places ordinary and unglamorous: a school board meeting, a group chat, a line at the polls, the comments beneath a story online.
 
 It is tempting to treat civility as a mood — something that descends on a society in good times and lifts in bad ones. But moods cannot be chosen. Practices can. A practice is something a person does on purpose, repeatedly, especially when it is inconvenient. Civility understood this way is less about tone than about a handful of habits.
 
