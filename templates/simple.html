@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% if key == 'store' %}{% set title = "Store" %}{% set description = "Democracy Today books and special print supplements." %}
+{% else %}{% set title = "DT Live" %}{% set description = "Democracy Today's live channel is coming soon." %}{% endif %}
+{% block main %}
+<div class="wrap">
+  {% if key == 'store' %}
+  <section class="soon">
+    <span class="kicker">Store</span>
+    <h1>Books &amp; Supplements</h1>
+    <p class="dek">Democracy Today books and special print supplements will be available here soon.</p>
+    <div class="books" aria-hidden="true"><span class="book">Democracy Today<br>Books</span><span class="book i">Supplement<br>Election 2026</span><span class="book r">Democracy Today<br>Essays</span></div>
+    <p>When the store opens, payments will be handled by a secure third-party checkout. Democracy Today will not receive or store your card details.</p>
+    <p><a class="btn btn-navy" href="/newsletter/">Get notified through our newsletter</a></p>
+  </section>
+  {% else %}
+  <section class="soon">
+    <span class="kicker">DT Live</span>
+    <h1>Our live channel is coming soon</h1>
+    <div class="screen big" role="img" aria-label="Live channel coming soon"><p>Live channel<span>Coming soon</span></p></div>
+    <p class="dek">Live coverage, conversations and election programming from Democracy Today. Follow our newsletter to know when we go on air.</p>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}

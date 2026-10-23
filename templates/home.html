@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% from "_macros.html" import card, kicker, byline %}
+{% block bodyclass %}home{% endblock %}
+{% block masthead %}
+<div class="util">
+  <details class="menu">
+    <summary aria-label="Open sections menu"><span aria-hidden="true">☰</span><span class="sr-only">Sections</span></summary>
+    <nav class="menu-panel" aria-label="All sections">
+      <p class="menu-h">News</p>
+      {% for s in sections if s.group == 'news' %}<a href="/{{ s.slug }}/">{{ s.name }}</a>{% endfor %}
+      <p class="menu-h">Opinion</p><a href="/opinion/">Opinion</a>
+      <p class="menu-h">Magazine</p>
+      {% for s in sections if s.group == 'magazine' %}<a href="/{{ s.slug }}/">{{ s.name }}</a>{% endfor %}
+      <p class="menu-h">More</p>
+      <a href="/live/">DT Live</a><a href="/store/">Store</a><a href="/newsletter/">Newsletter</a><a href="/about/">About Us</a>
+    </nav>
+  </details>
+  <p class="today" data-today>{{ build_time | long_date }}</p>
+  <div class="bar-actions">
+    <a class="live-soon" href="/live/"><i aria-hidden="true"></i>DT Live — Coming soon</a>
+    <a class="btn btn-line" href="/newsletter/">Newsletter</a>
+    <a class="btn btn-navy" href="/store/">Store</a>
+  </div>
+</div>
+<div class="mast">
+  <h1 class="mast-h"><a href="/"><img src="/img/logo.svg" alt="Democracy Today" width="560" height="64"></a></h1>
+  <p class="tag">{{ site.tagline }}</p>
+</div>
+{% endblock %}
+
+{% block main %}
+<div class="wrap">
+  {% set h = home %}
+  {% if h.lead %}
+  <section class="top" aria-label="Top stories">
+    <div class="col-side">
+      {% for a in h.side %}{{ card(a) }}{% else %}<p class="empty">More stories are on the way.</p>{% endfor %}
+    </div>
+    <div class="col-lead">
+      <article class="lead">
+        {% if h.lead.image %}<figure><a href="{{ h.lead.url }}" tabindex="-1" aria-hidden="true"><img src="{{ h.lead.image }}" alt="" fetchpriority="high"></a>
+          <figcaption class="credit">{{ h.lead.image_caption }} {{ h.lead.image_credit }}</figcaption></figure>{% endif %}
+        <span class="kicker">{{ h.lead.section_name }}</span>
+        <h2><a href="{{ h.lead.url }}">{{ h.lead.title }}</a></h2>
+        {% if h.lead.dek %}<p class="dek">{{ h.lead.dek }}</p>{% endif %}
+        {{ byline(h.lead) }}
+      </article>
+    </div>
+    <aside class="col-op" aria-labelledby="op-h">
+      <h2 id="op-h" class="col-h"><a href="/opinion/">Opinion</a></h2>
+      {% for a in h.opinion %}
+      <article class="op">
+        <p class="who">{{ a.byline }}</p>
+        <h3><a href="{{ a.url }}">{{ a.title }}</a></h3>
+        <p class="meta">{{ a.type_label }}</p>
+      </article>
+      {% else %}<p class="empty">Opinion pieces will appear here.</p>{% endfor %}
+      <p class="meta note">Opinion pieces are labeled and kept separate from news.</p>
+    </aside>
+  </section>
+  {% else %}
+  <p class="empty big">Our first stories are being edited. Please check back soon.</p>
+  {% endif %}
+</div>
+
+{% if h.magazine %}{% set m = h.magazine[0] %}
+<section class="mag" aria-labelledby="mag-h">
+  <div class="wrap mag-in">
+    <div>
+      <span class="kicker">{{ m.type_label }}{% if m.type_label|lower not in m.section_name|lower %} · {{ m.section_name }}{% endif %}</span>
+      <h2 id="mag-h"><a href="{{ m.url }}">{{ m.title }}</a></h2>
+      <div class="rr" aria-hidden="true"></div>
+      {% if m.dek %}<p class="dek">{{ m.dek }}</p>{% endif %}
+      {{ byline(m) }}
+    </div>
+    <div>
+      <p class="col-h">Ideas &amp; Essays</p>
+      <ul class="toc">
+        {% for s in sections if s.group == 'magazine' %}<li><a href="/{{ s.slug }}/">{{ s.name }}</a></li>{% endfor %}
+      </ul>
+    </div>
+    {% if m.image %}<a href="{{ m.url }}" tabindex="-1" aria-hidden="true" class="mag-img"><img src="{{ m.image }}" alt="" loading="lazy"></a>{% endif %}
+  </div>
+</section>
+{% endif %}
+
+<div class="wrap">
+  {% if h.more %}
+  <section class="sec" aria-labelledby="more-h">
+    <h2 id="more-h" class="sec-h">Latest</h2>
+    <div class="grid4">{% for a in h.more %}{{ card(a, img=true, dek=false) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+
+  <section class="row3" aria-label="More from Democracy Today">
+    <div class="box">
+      <span class="kicker">Store</span>
+      <h2><a href="/store/">Books &amp; Supplements</a></h2>
+      <p>Democracy Today books and special print supplements. Our store opens soon.</p>
+      <div class="books" aria-hidden="true"><span class="book">Democracy Today<br>Books</span><span class="book i">Supplement<br>Election 2026</span><span class="book r">Democracy Today<br>Essays</span></div>
+    </div>
+    <div class="live">
+      <span class="kicker">DT Live</span>
+      <div class="screen" role="img" aria-label="Live channel coming soon"><p>Live channel<span>Coming soon</span></p></div>
+    </div>
+    <div class="box">
+      {% include "_newsletter_form.html" %}
+    </div>
+  </section>
+</div>
+{% endblock %}

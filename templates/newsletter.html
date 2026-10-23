@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% set title = "You're signed up" if thanks else "Newsletter" %}
+{% set description = "Sign up for The Morning Brief from Democracy Today." %}
+{% block head %}{% if thanks %}<meta name="robots" content="noindex">{% endif %}{% endblock %}
+{% block main %}
+<div class="wrap">
+  <section class="soon narrow">
+  {% if thanks %}
+    <span class="kicker">Newsletter</span>
+    <h1>Thank you</h1>
+    <p class="dek">Your sign-up was received. You can unsubscribe at any time from any email we send.</p>
+    <p><a href="/">Return to the home page</a></p>
+  {% else %}
+    {% set form_id = 'page' %}
+    {% include "_newsletter_form.html" %}
+  {% endif %}
+  </section>
+</div>
+{% endblock %}

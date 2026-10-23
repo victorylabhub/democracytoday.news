@@ -1,0 +1,33 @@
+title: Democracy Today
+tagline: Ideas for a more open tomorrow
+url: https://democracytoday.news
+description: Democracy Today reports on U.S. politics, elections, Latino communities and the world, and publishes essays and ideas for a more open tomorrow.
+locale: en_US
+publisher:
+  name: Atlas Media Network, LLC
+  address: 36 Russ Street, 3rd Floor, Hartford, CT 06106, United States
+  email: info@atlasmedianetwork.org
+  privacy_email: privacy@atlasmedianetwork.org
+  url: https://www.atlasmedianetwork.org
+non_affiliation: Democracy Today is not affiliated with any other news organization, publication or program with a similar name.
+live:
+  status: coming_soon
+store:
+  status: coming_soon
+election:
+  name: 2026 Midterm Elections
+  date: 2026-11-03
+  show_banner: true
+sections:
+  - {slug: us, name: U.S., group: news}
+  - {slug: world, name: World, group: news}
+  - {slug: politics, name: Politics, group: news}
+  - {slug: elections, name: Elections, group: news}
+  - {slug: latinos, name: Latinos, group: news}
+  - {slug: opinion, name: Opinion, group: opinion}
+  - {slug: ideas, name: Ideas, group: magazine}
+  - {slug: essays, name: Essays, group: magazine}
+  - {slug: conversations, name: Conversations, group: magazine}
+  - {slug: books, name: Books, group: magazine}
+  - {slug: places, name: Places, group: magazine}
+  - {slug: people, name: People, group: magazine}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% from "_macros.html" import card %}
+{% set title = a.title %}{% set description = a.dek or a.excerpt %}{% set og_type = 'article' %}{% set og_image = a.image %}
+{% block head %}
+<meta property="article:published_time" content="{{ a.date | iso }}">
+{% if a.updated %}<meta property="article:modified_time" content="{{ a.updated | iso }}">{% endif %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"{{ 'OpinionNewsArticle' if a.is_opinion else 'NewsArticle' }}",
+ "headline":{{ a.title | tojson }},"description":{{ (a.dek or a.excerpt) | tojson }},
+ "datePublished":"{{ a.date | iso }}",{% if a.updated %}"dateModified":"{{ a.updated | iso }}",{% endif %}
+ {% if a.image %}"image":["{{ site.url }}{{ a.image }}"],{% endif %}
+ "author":[{"@type":"Organization","name":{{ a.byline | tojson }}}],
+ "publisher":{"@type":"Organization","name":"{{ site.title }}","parentOrganization":{"@type":"Organization","name":"{{ site.publisher.name }}"},"logo":{"@type":"ImageObject","url":"{{ site.url }}/img/logo.svg"}},
+ "mainEntityOfPage":"{{ site.url }}{{ a.url }}"}
+</script>
+{% endblock %}
+{% block bodyclass %}article-page{% endblock %}
+{% block main %}
+<article class="art" aria-labelledby="art-h">
+  <header class="art-head wrap-narrow">
+    <p class="kicker"><a href="/{{ a.section }}/">{{ a.section_name }}</a>{% if a.is_opinion %} <span class="label-op">{{ a.type_label }}</span>{% endif %}</p>
+    <h1 id="art-h">{{ a.title }}</h1>
+    {% if a.dek %}<p class="dek">{{ a.dek }}</p>{% endif %}
+    <div class="by">
+      <p class="n">By {{ a.byline }}</p>
+      <p class="d">Published <time datetime="{{ a.date | iso }}">{{ a.date | ap_date }}, {{ a.date | ap_time }}</time>{% if a.updated %} · Updated <time datetime="{{ a.updated | iso }}">{{ a.updated | ap_date }}, {{ a.updated | ap_time }}</time>{% endif %}</p>
+    </div>
+  </header>
+  {% if a.image %}
+  <figure class="art-fig">
+    <img src="{{ a.image }}" alt="{{ a.image_alt }}">
+    <figcaption>{{ a.image_caption }} <span class="cr">{{ a.image_credit }}</span></figcaption>
+  </figure>
+  {% endif %}
+  <div class="body wrap-text">
+    {{ a.html | safe }}
+  </div>
+  {% if a.sources or a.corrections %}
+  <aside class="src wrap-text" aria-labelledby="src-h">
+    {% if a.sources %}
+    <h2 id="src-h">Sources</h2>
+    <ol>
+      {% for s in a.sources %}
+      <li><a href="{{ s.url }}" rel="noopener">{{ s.title }}</a>{% if s.publisher %}, {{ s.publisher }}{% endif %}{% if s.date %}, {{ s.date | ap_date }}{% elif s.accessed %} (accessed {{ s.accessed | ap_date }}){% endif %}.</li>
+      {% endfor %}
+    </ol>
+    {% endif %}
+    {% if a.corrections %}
+    <div class="upd"><h2{% if not a.sources %} id="src-h"{% endif %}>Corrections</h2>
+      {% for c in a.corrections %}<p><time datetime="{{ c.date | iso }}">{{ c.date | ap_date }}, {{ c.date | ap_time }}</time>: {{ c.text }}</p>{% endfor %}</div>
+    {% endif %}
+  </aside>
+  {% endif %}
+  <p class="note wrap-text">Read our <a href="/standards/">Standards &amp; Ethics</a> · <a href="mailto:{{ site.publisher.email }}?subject={{ ('Correction: ' ~ a.title) | urlencode }}">Report an error</a><br>
+  Democracy Today is published by {{ site.publisher.name }}. {{ site.non_affiliation }}</p>
+</article>
+{% if related %}
+<div class="wrap">
+  <section class="sec" aria-labelledby="rel-h">
+    <h2 id="rel-h" class="sec-h">More in {{ a.section_name }}</h2>
+    <div class="grid4">{% for r in related %}{{ card(r, img=true, dek=false) }}{% endfor %}</div>
+  </section>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% from "_macros.html" import card %}
+{% set title = section.name %}
+{% set description = section.name ~ " coverage from Democracy Today." %}
+{% block main %}
+<div class="wrap">
+  <header class="sec-head"><h1>{{ section.name }}</h1></header>
+  {% if items %}
+  <div class="list">
+    {% for a in items %}
+    <article class="row">
+      <div>
+        {% if a.is_opinion %}<span class="kicker">{{ a.type_label }}</span>{% endif %}
+        <h2><a href="{{ a.url }}">{{ a.title }}</a></h2>
+        {% if a.dek %}<p class="dek-sm">{{ a.dek }}</p>{% endif %}
+        <p class="byline">By {{ a.byline }} <span class="meta">· <time datetime="{{ a.date | iso }}">{{ a.date | ap_date }}</time></span></p>
+      </div>
+      {% if a.image %}<a href="{{ a.url }}" tabindex="-1" aria-hidden="true"><img src="{{ a.image }}" alt="" loading="lazy"></a>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty big">Our {{ section.name }} coverage begins soon.</p>
+  {% endif %}
+</div>
+{% endblock %}

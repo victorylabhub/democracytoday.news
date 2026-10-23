@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% set page_title = (title ~ " — " ~ site.title) if title is defined and title else (site.title ~ " — " ~ site.tagline) %}
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ description if description is defined and description else site.description }}">
+<link rel="canonical" href="{{ site.url }}{{ path if path != '/404.html' else '/' }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ title if title is defined and title else site.title }}">
+<meta property="og:description" content="{{ description if description is defined and description else site.description }}">
+<meta property="og:type" content="{{ og_type if og_type is defined else 'website' }}">
+<meta property="og:url" content="{{ site.url }}{{ path }}">
+{% if og_image is defined and og_image %}<meta property="og:image" content="{{ site.url }}{{ og_image }}">
+<meta name="twitter:card" content="summary_large_image">{% endif %}
+<meta name="theme-color" content="#0B2148">
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
+<link rel="preload" href="/fonts/source-serif-4-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+{% block head %}{% endblock %}
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" role="banner">
+  <div class="wrap">
+    {% block masthead %}
+    <div class="hbar">
+      <details class="menu">
+        <summary aria-label="Open sections menu"><span aria-hidden="true">☰</span><span class="sr-only">Sections</span></summary>
+        <nav class="menu-panel" aria-label="All sections">
+          <p class="menu-h">News</p>
+          {% for s in sections if s.group == 'news' %}<a href="/{{ s.slug }}/">{{ s.name }}</a>{% endfor %}
+          <p class="menu-h">Opinion</p>
+          <a href="/opinion/">Opinion</a>
+          <p class="menu-h">Magazine</p>
+          {% for s in sections if s.group == 'magazine' %}<a href="/{{ s.slug }}/">{{ s.name }}</a>{% endfor %}
+          <p class="menu-h">More</p>
+          <a href="/live/">DT Live</a><a href="/store/">Store</a><a href="/newsletter/">Newsletter</a><a href="/about/">About Us</a>
+        </nav>
+      </details>
+      <a class="logo-sm" href="/" aria-label="Democracy Today, home"><img src="/img/logo.svg" alt="Democracy Today" width="240" height="27"></a>
+      <div class="bar-actions">
+        <a class="btn btn-line" href="/newsletter/">Newsletter</a>
+        <a class="btn btn-navy" href="/store/">Store</a>
+      </div>
+    </div>
+    {% endblock %}
+    <nav class="nav" aria-label="Sections">
+      <ul>
+        {% for s in sections if s.group != 'magazine' %}<li><a href="/{{ s.slug }}/"{% if path == '/' ~ s.slug ~ '/' %} aria-current="page"{% endif %}>{{ s.name }}</a></li>{% endfor %}
+        <li class="sep" aria-hidden="true"></li>
+        {% for s in sections if s.group == 'magazine' %}<li><a href="/{{ s.slug }}/"{% if path == '/' ~ s.slug ~ '/' %} aria-current="page"{% endif %}>{{ s.name }}</a></li>{% endfor %}
+        <li class="sep" aria-hidden="true"></li>
+        <li><a class="store" href="/store/">Store</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+{% if site.election.show_banner and build_time < election_dt.replace(hour=23, minute=59) %}
+<div class="wrap">
+  <aside class="elex" aria-label="Election information">
+    <span class="tag">Election 2026</span>
+    <span class="txt">Midterm elections · Tuesday, Nov. 3 · For deadlines and polling places, go to <a href="https://vote.gov" rel="noopener">vote.gov</a> or your <a href="https://www.eac.gov/voters/register-and-vote-in-your-state" rel="noopener">state election office</a></span>
+    <a class="cd" href="/elections/" data-countdown="{{ site.election.date }}">Election guide ›</a>
+  </aside>
+</div>
+{% endif %}
+
+<main id="main" tabindex="-1">
+{% block main %}{% endblock %}
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="wrap">
+    <a href="/" aria-label="Democracy Today, home"><img class="flogo" src="/img/logo-white.svg" alt="Democracy Today" width="220" height="25"></a>
+    <div class="fcols">
+      <nav aria-label="News sections"><h2>News</h2>{% for s in sections if s.group == 'news' %}<a href="/{{ s.slug }}/">{{ s.name }}</a>{% endfor %}</nav>
+      <nav aria-label="Opinion"><h2>Opinion</h2><a href="/opinion/">Opinion</a></nav>
+      <nav aria-label="Magazine sections"><h2>Magazine</h2>{% for s in sections if s.group == 'magazine' %}<a href="/{{ s.slug }}/">{{ s.name }}</a>{% endfor %}</nav>
+      <nav aria-label="About"><h2>About</h2><a href="/about/">About Us</a><a href="/standards/">Standards &amp; Ethics</a><a href="/corrections/">Corrections</a><a href="/about/#contact">Contact</a></nav>
+      <nav aria-label="More"><h2>More</h2><a href="/store/">Store</a><a href="/newsletter/">Newsletter</a><a href="/live/">DT Live</a><a href="/privacy/">Privacy Notice</a><a href="/feed.xml">RSS</a></nav>
+    </div>
+    <p class="own">Democracy Today is published by <strong>{{ site.publisher.name }}</strong>, {{ site.publisher.address }} · <a href="mailto:{{ site.publisher.email }}">{{ site.publisher.email }}</a> · <a href="{{ site.publisher.url }}" rel="noopener">atlasmedianetwork.org</a><br>
+    {{ site.non_affiliation }} © {{ build_time.year }} {{ site.publisher.name }}.</p>
+  </div>
+</footer>
+<script src="/js/site.js" defer></script>
+</body>
+</html>

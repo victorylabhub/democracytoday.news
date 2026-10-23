@@ -1,0 +1,17 @@
+{% macro kicker(a) -%}
+<span class="kicker">{% if a.is_opinion %}{{ a.type_label }}{% else %}{{ a.section_name }}{% endif %}</span>
+{%- endmacro %}
+
+{% macro byline(a) -%}
+<p class="byline">By {{ a.byline }} <span class="meta">· <time datetime="{{ a.date | iso }}">{{ a.date | ap_date }}</time></span></p>
+{%- endmacro %}
+
+{% macro card(a, img=false, dek=true, h='h3') -%}
+<article class="card">
+  {% if img and a.image %}<a href="{{ a.url }}" tabindex="-1" aria-hidden="true"><img src="{{ a.image }}" alt="" loading="lazy" decoding="async"></a>{% endif %}
+  {{ kicker(a) }}
+  <{{ h }}><a href="{{ a.url }}">{{ a.title }}</a></{{ h }}>
+  {% if dek and a.dek %}<p class="dek-sm">{{ a.dek }}</p>{% endif %}
+  {{ byline(a) }}
+</article>
+{%- endmacro %}

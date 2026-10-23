@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% from "_macros.html" import card %}
+{% set title = "Elections" %}
+{% set description = "Democracy Today's guide to the 2026 midterm elections, with links to official sources." %}
+{% set e = elections %}
+{% block main %}
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap">
+    <span class="kicker">Elections</span>
+    <h1 id="hero-h">{% if e.status == 'pre_election' %}2026 Midterm Elections{% else %}Election Night 2026{% endif %}</h1>
+    <p>Tuesday, November 3, 2026 · {{ e.results_source_note }}</p>
+    <ul class="st" aria-label="Coverage stages">
+      <li{% if e.status == 'pre_election' %} class="on" aria-current="step"{% endif %}>Before Nov. 3: Guides</li>
+      <li{% if e.status == 'live' %} class="on" aria-current="step"{% endif %}>Nov. 3: Results &amp; updates</li>
+      <li{% if e.status == 'final' %} class="on" aria-current="step"{% endif %}>After: Certification</li>
+    </ul>
+  </div>
+</section>
+
+<div class="wrap g2">
+  <div>
+    {% for key, label in [('senate', 'U.S. Senate'), ('house', 'U.S. House')] %}
+    {% set c = e[key] %}
+    {% set total = c.dem_won + c.rep_won + c.other_won %}
+    <section class="bop" aria-labelledby="bop-{{ key }}">
+      <h2 id="bop-{{ key }}"><span>{{ label }} · seats won</span><span class="meta">{{ c.control_threshold }} for control</span></h2>
+      {% if total > 0 %}
+      <div class="bar" role="img" aria-label="Democrats {{ c.dem_won }}, Republicans {{ c.rep_won }}, others {{ c.other_won }}">
+        <span class="d" style="width:{{ (c.dem_won / (100 if key == 'senate' else 435) * 100) | round(2) }}%"></span>
+        <span class="r" style="width:{{ (c.rep_won / (100 if key == 'senate' else 435) * 100) | round(2) }}%"></span>
+      </div>
+      <p class="bar-l"><span>Democrats {{ c.dem_won }}</span><span>Others {{ c.other_won }}</span><span>Republicans {{ c.rep_won }}</span></p>
+      <p class="meta">Source: {{ c.source }} · Updated {{ c.updated | ap_time }}</p>
+      {% else %}
+      <div class="bar empty-bar" aria-hidden="true"></div>
+      <p class="bar-l"><span>Democrats</span><span>No results yet</span><span>Republicans</span></p>
+      <p class="empty">Results will appear after polls close, as reported by official sources.</p>
+      {% endif %}
+    </section>
+    {% endfor %}
+
+    <section class="bop" aria-labelledby="races-h">
+      <h2 id="races-h"><span>Key races</span></h2>
+      {% if e.races %}
+      <div class="table-wrap"><table>
+        <caption class="sr-only">Key race results</caption>
+        <thead><tr><th scope="col">Race</th><th scope="col">Candidates</th><th scope="col">Reporting</th><th scope="col">Status</th><th scope="col">Source · update</th></tr></thead>
+        <tbody>
+        {% for r in e.races %}
+        <tr><th scope="row">{{ r.race }}</th><td>{{ r.candidates }}</td><td>{{ r.reporting }}</td><td>{{ r.status }}{% if r.called_by %}<br><span class="meta">Called by {{ r.called_by }}</span>{% endif %}</td>
+          <td>{% if r.source_url %}<a href="{{ r.source_url }}" rel="noopener">{{ r.source }}</a>{% else %}{{ r.source }}{% endif %}<br><span class="meta">{{ r.updated | ap_time }}</span></td></tr>
+        {% endfor %}
+        </tbody>
+      </table></div>
+      {% else %}
+      <p class="empty">Key races will be listed here on election night.</p>
+      {% endif %}
+    </section>
+
+    <section class="sec" aria-labelledby="ecov-h">
+      <h2 id="ecov-h" class="sec-h">Election coverage</h2>
+      {% for a in items %}{{ card(a) }}{% else %}<p class="empty">Coverage begins soon.</p>{% endfor %}
+    </section>
+  </div>
+
+  <div>
+    <section class="feed" aria-labelledby="feed-h">
+      <h2 id="feed-h"><i aria-hidden="true"></i>Live updates</h2>
+      {% for u in e.updates | sort(attribute='time', reverse=true) %}
+      <article class="post">
+        <p class="t"><time datetime="{{ u.time | iso }}">{{ u.time | ap_time }}</time></p>
+        <h3>{{ u.headline }}</h3>
+        {% if u.body %}<p>{{ u.body }}</p>{% endif %}
+        <p class="b">By {{ u.byline }}{% if u.source_url %} · <a href="{{ u.source_url }}" rel="noopener">Source</a>{% endif %}</p>
+      </article>
+      {% else %}
+      <p class="empty">Live updates will begin on election night. Each update will be signed and time-stamped.</p>
+      {% endfor %}
+    </section>
+    <section class="off" aria-labelledby="off-h">
+      <h2 id="off-h">Official sources</h2>
+      <p>For registration, polling places, deadlines and certified results, rely on official sources:</p>
+      <ul>
+        <li><a href="https://vote.gov" rel="noopener">Vote.gov</a> — register, check your registration and learn your state's rules</li>
+        <li><a href="https://www.eac.gov/voters/register-and-vote-in-your-state" rel="noopener">Register and Vote in Your State</a> — U.S. Election Assistance Commission links to every state election office</li>
+        <li><a href="https://www.usa.gov/voter-registration-deadlines" rel="noopener">Voter registration deadlines</a> — USA.gov</li>
+      </ul>
+    </section>
+  </div>
+</div>
+{% endblock %}

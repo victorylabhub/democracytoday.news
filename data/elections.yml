@@ -1,0 +1,34 @@
+# Election-night data. Edited from the newsroom panel (/admin/ > Election Night).
+# Only enter figures released by an official source or a named news organization,
+# and always fill in source and updated time.
+status: pre_election   # pre_election | live | final
+results_source_note: "Results will appear here as they are reported by official state election authorities. All election-night results are unofficial until certified."
+senate:
+  control_threshold: 51
+  dem_won: 0
+  rep_won: 0
+  other_won: 0
+  source: ""
+  updated: ""
+house:
+  control_threshold: 218
+  dem_won: 0
+  rep_won: 0
+  other_won: 0
+  source: ""
+  updated: ""
+races: []
+#  - race: "State · Office"
+#    candidates: "Name (Party) – Name (Party)"
+#    reporting: "45%"
+#    status: "Awaiting results | Leading: Name | Called: Name"
+#    called_by: ""
+#    source: "Name of official source"
+#    source_url: ""
+#    updated: "2026-11-03T21:15:00-05:00"
+updates: []
+#  - time: "2026-11-03T19:00:00-05:00"
+#    headline: ""
+#    body: ""
+#    byline: "Democracy Today Editorial"
+#    source_url: ""

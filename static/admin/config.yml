@@ -1,0 +1,151 @@
+# Democracy Today newsroom panel (Decap CMS)
+# Requires Netlify Identity (invite only) and Git Gateway enabled on the Netlify project.
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "Upload “{{path}}”"
+    deleteMedia: "Delete “{{path}}”"
+
+# Drafts live on their own branches (cms/...) until an editor publishes them.
+publish_mode: editorial_workflow
+
+site_url: https://democracytoday.news
+display_url: https://democracytoday.news
+logo_url: /img/logo.svg
+locale: en
+
+media_folder: static/img/uploads
+public_folder: /img/uploads
+
+collections:
+  - name: articles
+    label: Stories
+    label_singular: Story
+    folder: content/articles
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{section}} · {{year}}-{{month}}-{{day}}"
+    sortable_fields: [date, title, section]
+    view_filters:
+      - {label: News, field: type, pattern: news}
+      - {label: Opinion & Essays, field: type, pattern: "opinion|editorial|essay"}
+    fields:
+      - {label: Headline, name: title, widget: string}
+      - {label: Deck (summary), name: dek, widget: text, required: false}
+      - label: Section
+        name: section
+        widget: select
+        options: [{label: U.S., value: us}, {label: World, value: world}, {label: Politics, value: politics}, {label: Elections, value: elections}, {label: Latinos, value: latinos}, {label: Opinion, value: opinion}, {label: Ideas, value: ideas}, {label: Essays, value: essays}, {label: Conversations, value: conversations}, {label: Books, value: books}, {label: Places, value: places}, {label: People, value: people}]
+      - label: Also show in
+        name: also
+        widget: select
+        multiple: true
+        required: false
+        options: [{label: U.S., value: us}, {label: World, value: world}, {label: Politics, value: politics}, {label: Elections, value: elections}, {label: Latinos, value: latinos}, {label: Ideas, value: ideas}, {label: Essays, value: essays}, {label: Conversations, value: conversations}, {label: Books, value: books}, {label: Places, value: places}, {label: People, value: people}]
+      - label: Type
+        name: type
+        widget: select
+        default: news
+        hint: "Opinion, editorial, essay and review are labeled as opinion on the site."
+        options: [{label: News, value: news}, {label: Analysis, value: analysis}, {label: Opinion column, value: opinion}, {label: Editorial, value: editorial}, {label: Essay, value: essay}, {label: Conversation / interview, value: interview}, {label: Review, value: review}]
+      - {label: Byline, name: byline, widget: string, default: "Democracy Today Editorial", hint: "Every story must be signed."}
+      - {label: Publication date, name: date, widget: datetime, format: "YYYY-MM-DDTHH:mm:ssZ"}
+      - {label: Updated, name: updated, widget: datetime, format: "YYYY-MM-DDTHH:mm:ssZ", required: false}
+      - label: Home placement
+        name: placement
+        widget: select
+        required: false
+        options: [{label: Lead story, value: lead}, {label: Top stories, value: top}, {label: Magazine band, value: magazine}]
+      - {label: Image, name: image, widget: image, required: false}
+      - {label: Image description (alt text), name: image_alt, widget: string, required: false, hint: "Required if there is an image. Describe what the image shows."}
+      - {label: Image caption, name: image_caption, widget: string, required: false, hint: "Write 'Illustrative photo.' for stock images."}
+      - {label: Image credit, name: image_credit, widget: string, required: false, hint: "Required if there is an image (e.g. Photographer / Agency, or Pexels)."}
+      - {label: Body, name: body, widget: markdown}
+      - label: Sources
+        name: sources
+        widget: list
+        required: false
+        hint: "Required for News and Analysis. Link primary sources."
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Publisher / institution, name: publisher, widget: string, required: false}
+          - {label: Publication date, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false, required: false}
+          - {label: Accessed on, name: accessed, widget: datetime, format: "YYYY-MM-DD", time_format: false, required: false}
+          - {label: URL, name: url, widget: string, pattern: ["^https?://", "Must be a full URL"]}
+      - label: Corrections
+        name: corrections
+        widget: list
+        required: false
+        fields:
+          - {label: Date and time, name: date, widget: datetime, format: "YYYY-MM-DDTHH:mm:ssZ"}
+          - {label: What changed and why, name: text, widget: text}
+
+  - name: pages
+    label: Institutional pages
+    label_singular: Page
+    folder: content/pages
+    create: false
+    delete: false
+    extension: md
+    format: frontmatter
+    fields:
+      - {label: Title, name: title, widget: string}
+      - {label: Slug, name: slug, widget: hidden}
+      - {label: Description, name: description, widget: string, required: false}
+      - {label: Notice banner, name: notice, widget: string, required: false}
+      - {label: Body, name: body, widget: markdown}
+
+  - name: data
+    label: Settings & Election Night
+    editor: {preview: false}
+    files:
+      - name: elections
+        label: Election Night
+        file: data/elections.yml
+        format: yml
+        fields:
+          - label: Status
+            name: status
+            widget: select
+            options: [{label: Before election, value: pre_election}, {label: Live (election night), value: live}, {label: Final / certification, value: final}]
+          - {label: Results note, name: results_source_note, widget: text}
+          - label: Senate
+            name: senate
+            widget: object
+            fields: &bop
+              - {label: Seats needed for control, name: control_threshold, widget: number}
+              - {label: Democrats won, name: dem_won, widget: number, default: 0}
+              - {label: Republicans won, name: rep_won, widget: number, default: 0}
+              - {label: Others won, name: other_won, widget: number, default: 0}
+              - {label: Source (who reported/called), name: source, widget: string, required: false}
+              - {label: Last updated, name: updated, widget: datetime, required: false, format: "YYYY-MM-DDTHH:mm:ssZ"}
+          - {label: House, name: house, widget: object, fields: *bop}
+          - label: Key races
+            name: races
+            widget: list
+            required: false
+            fields:
+              - {label: Race (State · Office), name: race, widget: string}
+              - {label: Candidates, name: candidates, widget: string}
+              - {label: "% reporting", name: reporting, widget: string, required: false}
+              - {label: Status, name: status, widget: string, hint: "Awaiting results / Leading: Name / Called: Name"}
+              - {label: Called by (organization), name: called_by, widget: string, required: false}
+              - {label: Source, name: source, widget: string}
+              - {label: Source URL, name: source_url, widget: string, required: false}
+              - {label: Updated, name: updated, widget: datetime, format: "YYYY-MM-DDTHH:mm:ssZ"}
+          - label: Live updates
+            name: updates
+            widget: list
+            required: false
+            fields:
+              - {label: Time, name: time, widget: datetime, format: "YYYY-MM-DDTHH:mm:ssZ"}
+              - {label: Headline, name: headline, widget: string}
+              - {label: Text, name: body, widget: text, required: false}
+              - {label: Byline, name: byline, widget: string, default: "Democracy Today Editorial"}
+              - {label: Source URL, name: source_url, widget: string, required: false}

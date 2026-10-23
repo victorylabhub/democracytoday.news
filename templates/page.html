@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% set title = page.title %}{% set description = page.description %}
+{% block main %}
+<article class="art page">
+  <header class="art-head wrap-text"><h1>{{ page.title }}</h1>
+    {% if page.notice %}<p class="notice" role="note">{{ page.notice }}</p>{% endif %}
+  </header>
+  <div class="body wrap-text">{{ page.html | safe }}</div>
+</article>
+{% endblock %}

@@ -1,0 +1,11 @@
+<span class="kicker">Newsletter</span>
+<h2>The Morning Brief</h2>
+<p>One email each weekday with our reporting and essays. We ask only for your email address.</p>
+<form class="nl" name="newsletter" method="POST" action="/newsletter/thanks/" data-netlify="true" netlify-honeypot="company">
+  <input type="hidden" name="form-name" value="newsletter">
+  <p class="hp" aria-hidden="true"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+  <label for="nl-email-{{ form_id|default('a') }}" class="sr-only">Email address</label>
+  <input id="nl-email-{{ form_id|default('a') }}" type="email" name="email" required autocomplete="email" placeholder="Email address">
+  <button class="btn btn-navy" type="submit">Sign up</button>
+</form>
+<p class="meta">By signing up you agree to our <a href="/privacy/">Privacy Notice</a>. Unsubscribe anytime.</p>
