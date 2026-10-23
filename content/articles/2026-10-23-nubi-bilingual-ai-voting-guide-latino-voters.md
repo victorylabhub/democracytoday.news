@@ -1,6 +1,6 @@
 ---
-title: "A bilingual AI guide aims to make voting information easier to reach for Latino voters"
-dek: "Nubi, launched this month by the Latino civic group Mi Familia en Acción, answers questions about registering, voting and citizenship in English and Spanish, around the clock."
+title: "Meet Nubi, a bilingual AI guide that walks Latino voters through the midterms"
+dek: "Launched this month by a national Latino civic group, the tool answers questions about registering, voting and citizenship in English and Spanish, and tailors its answers to where users live."
 section: latinos
 also: [elections]
 type: news
@@ -8,6 +8,10 @@ byline: Democracy Today Editorial
 date: 2026-10-23T16:30:00-04:00
 placement: top
 sources:
+  - title: "Llega Nubi, el asistente de IA para los votantes latinos de cara a las midterms"
+    publisher: "El País"
+    date: 2026-10-23
+    url: https://elpais.com/us/2026-10-23/llega-nubi-el-asistente-de-ia-para-los-votantes-latinos-de-cara-a-las-midterms.html
   - title: "Mi Familia en Acción Launches Nubi, Groundbreaking AI-Powered Civic Participation Tool Built for Latino Communities"
     publisher: "Mi Familia en Acción"
     date: 2026-10-05
@@ -20,38 +24,38 @@ sources:
     publisher: "Univision"
     date: 2026-10-01
     url: https://www.univision.com/noticias/elecciones-2026-asi-funciona-nubi-herramienta-impulsada-por-ia-que-ayuda-a-votantes-hispanos-y-latinos-video
-  - title: "Llega Nubi, el asistente de IA para los votantes latinos de cara a las midterms"
-    publisher: "El País"
-    date: 2026-10-23
-    url: https://elpais.com/us/2026-10-23/llega-nubi-el-asistente-de-ia-para-los-votantes-latinos-de-cara-a-las-midterms.html
   - title: "The U.S. electorate's changing racial and ethnic makeup"
     publisher: "Pew Research Center"
     date: 2026-09-10
     url: https://www.pewresearch.org/race-and-ethnicity/2026/09/10/the-u-s-electorates-changing-racial-and-ethnic-makeup/
 ---
 
-With the midterm elections less than two weeks away, a new bilingual tool is giving Latino voters another way to get answers to some of the most common questions about taking part in an election: how to register, when and where to vote, how to vote by mail and how to become a citizen.
+A small cartoon cloud introduces itself as your civic coach and asks a few simple questions: which state or territory you vote in, which county, and which election you are getting ready for. From there, it offers to help you check your registration, choose how and where to vote, or vote early.
 
-The tool, called Nubi, was launched in early October by [Mi Familia en Acción](https://www.mifamiliaenaccion.org/mfa-launches-nubi/), a national Latino civic engagement organization, which describes it as a bilingual coach for civic participation, available in English and Spanish 24 hours a day. The launch has drawn coverage from [Axios](https://www.axios.com/2026/10/06/latino-voters-ai-guide-midterms-nubi), [Univision](https://www.univision.com/noticias/elecciones-2026-asi-funciona-nubi-herramienta-impulsada-por-ia-que-ayuda-a-votantes-hispanos-y-latinos-video) and, on Friday, [El País](https://elpais.com/us/2026-10-23/llega-nubi-el-asistente-de-ia-para-los-votantes-latinos-de-cara-a-las-midterms.html).
+That is Nubi, a bilingual tool powered by artificial intelligence that a national Latino civic organization launched this month to help voters find reliable information before the Nov. 3 midterm elections, [El País reported on Friday](https://elpais.com/us/2026-10-23/llega-nubi-el-asistente-de-ia-para-los-votantes-latinos-de-cara-a-las-midterms.html).
 
-## A conversation instead of a search
+Nubi was released in early October by [Mi Familia en Acción](https://www.mifamiliaenaccion.org/mfa-launches-nubi/), which describes it as a coach for civic participation that works in English and Spanish, 24 hours a day. The group's president and chief executive, Héctor Sánchez Barba, also leads the related organization Mi Familia Vota, [according to Univision](https://www.univision.com/noticias/elecciones-2026-asi-funciona-nubi-herramienta-impulsada-por-ia-que-ayuda-a-votantes-hispanos-y-latinos-video), which credited both groups with promoting the tool.
 
-The idea behind Nubi is simple: instead of sending people to search across several election websites, it lets them ask a question in their own words and get an answer for where they live. According to Axios, Nubi starts by asking a few basic questions and then gives information specific to the user's location. It covers all 50 states, and its topics include voter registration, early voting, mail ballots, citizenship and know-your-rights information.
+## Answers for where you live
 
-Héctor Sánchez Barba, the organization's president and chief executive, told Axios that the goal is to bring reliable information together in one place, noting that people "don't need to be a constitutional lawyer" to find out how to vote. In the group's announcement, he said that "technology should break down barriers."
+The idea is to replace a confusing search across several election websites with a short conversation. According to [Axios](https://www.axios.com/2026/10/06/latino-voters-ai-guide-midterms-nubi), Nubi works in all 50 states and gives locally specific answers on voter registration, where and when to vote, early voting, mail ballots, citizenship and know-your-rights information. It is available on the web and, Sánchez Barba told Univision, as a smartphone app.
 
-Nubi is available on the web through the organization's site and, according to Sánchez Barba's interview with Univision, as an app for smartphones.
+Sánchez Barba told El País that the project began about six years ago with a multidisciplinary team, with the goal of building a central, trustworthy source of information for Latino families. He described the people it is meant to serve as voters who move between Spanish and English, often work irregular hours and may not have time to research how voting works. He told Axios that people should not need to be constitutional lawyers to figure out how to vote.
 
-## Built with guardrails
+When El País tested the tool by asking what to do if immigration agents were near a polling place, Nubi responded with guidance on what to do in case of intimidation and phone numbers for reporting threats, the newspaper reported.
 
-The organization says Nubi was designed differently from a general-purpose chatbot. According to Axios, it does not search the open internet; instead, the group supplies it with information from sources it considers reliable, and human review and guardrails govern what it can answer. When Nubi does not have an answer, it says so and points users to a trusted source rather than guessing. The group says it will keep the tool updated as voting rules, court decisions and government policies change.
+## Built from community experience
 
-Mi Familia en Acción describes Nubi as nonpartisan. Sánchez Barba told Univision that it does not recommend candidates, and Axios reported that it does not recommend candidates or causes. The organization says the tool follows responsible-AI principles, including privacy protections and human oversight. Denis Cook, its chief innovation officer and Nubi's developer, said in the announcement that communities deserve technology that reflects their experiences and earns their trust.
+Sánchez Barba credited the organization's years of door-to-door work for shaping the tool. "You can't build technology without understanding communities," he told El País (translated from Spanish). He said the group has seen election misinformation in Spanish confuse voters in past campaigns, including messages telling people to vote on a Wednesday when Election Day was a Tuesday.
 
-Sánchez Barba told Axios that Nubi is not meant to replace door-knocking and other traditional organizing, but could help reach rural and overlooked communities that organizers rarely visit.
+Nubi is designed to stay within what its creators have verified. It does not search the open internet; the group supplies it with information from sources it has selected, and human review and guardrails govern what it can answer, according to Axios and El País. When Nubi does not have an answer, it says so and points users to a trusted source, Axios reported. The organization says it will keep the tool updated as voting rules, court decisions and policies change.
+
+The group describes Nubi as nonpartisan. It does not recommend candidates or causes, according to Axios and Univision, and when asked, the tool itself explains that its role is to provide neutral information so users can make their own decisions, El País reported. It also reminds users that voters must be U.S. citizens and at least 18 years old. Sánchez Barba told El País and Univision that Nubi does not retain the personal information users provide, such as ZIP codes, email addresses or phone numbers.
+
+Sánchez Barba told Axios that the tool is not a replacement for knocking on doors, but it can reach rural and overlooked communities that organizers rarely visit.
 
 ## A large and growing electorate
 
-The tool arrives as the Latino electorate continues to grow. The Pew Research Center projects that about [39 million Latinos are eligible to vote in 2026](https://www.pewresearch.org/race-and-ethnicity/2026/09/10/the-u-s-electorates-changing-racial-and-ethnic-makeup/), about 16% of all eligible voters, after adding 5.2 million eligible voters since 2022. Pew estimates that more than 4 million of those new voters are young Latinos who turned 18 during that period.
+Nubi arrives as the Latino electorate continues to grow. The Pew Research Center projects that about [39 million Latinos are eligible to vote in 2026](https://www.pewresearch.org/race-and-ethnicity/2026/09/10/the-u-s-electorates-changing-racial-and-ethnic-makeup/), about 16% of all eligible voters, after adding 5.2 million eligible voters since 2022. Pew estimates that more than 4 million of them are young Latinos who turned 18 during that period.
 
-For anyone using Nubi or any other guide, official sources remain the final word on deadlines, polling places and rules. Voters can confirm their information at [vote.gov](https://vote.gov) or with their [state election office](https://www.eac.gov/voters/register-and-vote-in-your-state).
+As with any guide, official sources have the final word on deadlines, polling places and rules. Voters can confirm their information at [vote.gov](https://vote.gov) or with their [state election office](https://www.eac.gov/voters/register-and-vote-in-your-state).
