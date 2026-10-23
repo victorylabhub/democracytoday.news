@@ -5,7 +5,7 @@ section: latinos
 also: [elections]
 type: news
 byline: Democracy Today Editorial
-date: 2026-10-23T09:00:00-04:00
+date: 2026-10-23T11:45:00-04:00
 placement: top
 sources:
   - title: "The U.S. electorate's changing racial and ethnic makeup"

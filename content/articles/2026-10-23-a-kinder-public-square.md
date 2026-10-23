@@ -5,7 +5,7 @@ section: essays
 also: [ideas]
 type: essay
 byline: Democracy Today Editorial
-date: 2026-10-23T09:00:00-04:00
+date: 2026-10-23T11:45:00-04:00
 placement: magazine
 image: /img/tree.jpg
 image_alt: "Illustration of a person sitting beneath a tree on a red cliff, looking out over a coastal town and mountains."

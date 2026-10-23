@@ -5,7 +5,7 @@ section: elections
 also: [politics]
 type: news
 byline: Democracy Today Editorial
-date: 2026-10-23T09:00:00-04:00
+date: 2026-10-23T11:45:00-04:00
 placement: lead
 image: /img/skyline.jpg
 image_alt: "An American flag hangs from a building facade in Manhattan, with the Empire State Building in the background."

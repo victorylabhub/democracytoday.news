@@ -4,7 +4,7 @@ dek: "A newsroom's first obligation is to tell readers what it knows, how it kno
 section: opinion
 type: editorial
 byline: Democracy Today Editorial
-date: 2026-10-23T09:00:00-04:00
+date: 2026-10-23T11:45:00-04:00
 placement: top
 image: /img/press.jpg
 image_alt: "Workers read freshly printed newspapers in a printing plant."

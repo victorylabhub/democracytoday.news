@@ -5,7 +5,7 @@ section: elections
 also: [us]
 type: news
 byline: Democracy Today Editorial
-date: 2026-10-23T09:00:00-04:00
+date: 2026-10-23T11:45:00-04:00
 placement: top
 image: /img/group.jpg
 image_alt: "Four young adults pose together in front of an American flag."
