@@ -9,8 +9,9 @@
  "headline":{{ a.title | tojson }},"description":{{ (a.dek or a.excerpt) | tojson }},
  "datePublished":"{{ a.date | iso }}",{% if a.updated %}"dateModified":"{{ a.updated | iso }}",{% endif %}
  {% if a.image %}"image":["{{ site.url }}{{ a.image }}"],{% endif %}
- "author":[{"@type":"Organization","name":{{ a.byline | tojson }}}],
- "publisher":{"@type":"Organization","name":"{{ site.title }}","parentOrganization":{"@type":"Organization","name":"{{ site.publisher.name }}"},"logo":{"@type":"ImageObject","url":"{{ site.url }}/img/logo.svg"}},
+ "author":[{"@type":"Organization","name":{{ a.byline | tojson }},"url":"{{ site.url }}/about/"}],
+ "articleSection":{{ a.section_name | tojson }},"inLanguage":"en-US","isAccessibleForFree":true,
+ "publisher":{"@type":"NewsMediaOrganization","name":"{{ site.title }}","url":"{{ site.url }}/","publishingPrinciples":"{{ site.url }}/standards/","correctionsPolicy":"{{ site.url }}/corrections/","parentOrganization":{"@type":"Organization","name":"{{ site.publisher.name }}"},"logo":{"@type":"ImageObject","url":"{{ site.url }}/img/logo-600x60.png","width":600,"height":60}},
  "mainEntityOfPage":"{{ site.url }}{{ a.url }}"}
 </script>
 {% endblock %}

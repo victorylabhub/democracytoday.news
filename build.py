@@ -245,15 +245,45 @@ def main():
     render("newsletter.html", "/newsletter/thanks/", thanks=True)
     render("404.html", "/404.html")
 
-    # sitemap
-    urls = ["/"] + [f"/{s}/" for s in sections] + [a["url"] for a in articles] + \
-           [p["url"] for p in pages] + ["/store/", "/live/", "/newsletter/"]
+    # sitemap (with lastmod and images)
+    def iso_utc(d):
+        return as_datetime(d).astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    def newest(items):
+        ds = [a.get("updated_dt") or a["date_dt"] for a in items if a.get("date_dt")]
+        return max(ds) if ds else None
+    entries = [("/", newest(articles), None)]
+    for slug in sections:
+        entries.append((f"/{slug}/", newest([a for a in articles if slug in a["all_sections"]]), None))
+    for a in articles:
+        entries.append((a["url"], a.get("updated_dt") or a["date_dt"], a.get("image")))
+    for u in [p["url"] for p in pages] + ["/store/", "/live/", "/newsletter/"]:
+        entries.append((u, None, None))
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
-          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for u in urls:
-        sm.append(f"  <url><loc>{site['url']}{u}</loc></url>")
+          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+          'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
+    for u, lm, img in entries:
+        line = f"  <url><loc>{site['url']}{u}</loc>"
+        if lm:
+            line += f"<lastmod>{iso_utc(lm)}</lastmod>"
+        if img:
+            line += f"<image:image><image:loc>{site['url']}{img}</image:loc></image:image>"
+        sm.append(line + "</url>")
     sm.append("</urlset>")
     write("/sitemap.xml", "\n".join(sm) + "\n")
+
+    # Google News sitemap: articles published in the last 48 hours
+    cutoff = build_time - dt.timedelta(hours=48)
+    recent = [a for a in articles if a["date_dt"] and a["date_dt"] >= cutoff]
+    nm = ['<?xml version="1.0" encoding="UTF-8"?>',
+          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+          'xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">']
+    for a in recent[:1000]:
+        nm.append(f"  <url><loc>{site['url']}{a['url']}</loc><news:news><news:publication>"
+                  f"<news:name>{html.escape(site['title'])}</news:name><news:language>en</news:language>"
+                  f"</news:publication><news:publication_date>{as_datetime(a['date']).isoformat()}"
+                  f"</news:publication_date><news:title>{html.escape(a['title'])}</news:title></news:news></url>")
+    nm.append("</urlset>")
+    write("/news-sitemap.xml", "\n".join(nm) + "\n")
 
     # RSS
     items = []
@@ -269,7 +299,8 @@ def main():
            f"<description>{html.escape(site['description'])}</description><language>en-us</language>"
            + "".join(items) + "</channel></rss>\n")
     write("/feed.xml", rss)
-    write("/robots.txt", f"User-agent: *\nDisallow: /admin/\nSitemap: {site['url']}/sitemap.xml\n")
+    write("/robots.txt", f"User-agent: *\nDisallow: /admin/\n\nSitemap: {site['url']}/sitemap.xml\n"
+                        f"Sitemap: {site['url']}/news-sitemap.xml\n")
     print(f"Built {len(articles)} articles, {len(pages)} pages, {len(sections)} sections -> {OUT}")
 
 

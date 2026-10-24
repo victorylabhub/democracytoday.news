@@ -12,9 +12,11 @@
 <meta property="og:description" content="{{ description if description is defined and description else site.description }}">
 <meta property="og:type" content="{{ og_type if og_type is defined else 'website' }}">
 <meta property="og:url" content="{{ site.url }}{{ path }}">
-{% if og_image is defined and og_image %}<meta property="og:image" content="{{ site.url }}{{ og_image }}">
-<meta name="twitter:card" content="summary_large_image">{% endif %}
+<meta property="og:image" content="{{ site.url }}{{ og_image if og_image is defined and og_image else '/img/og-default.png' }}">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0B2148">
+{% if site.seo and site.seo.google_site_verification %}<meta name="google-site-verification" content="{{ site.seo.google_site_verification }}">{% endif %}
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
 <link rel="preload" href="/fonts/source-serif-4-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>

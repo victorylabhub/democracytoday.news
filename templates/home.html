@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% from "_macros.html" import card, kicker, byline %}
+{% block head %}<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"NewsMediaOrganization","name":"{{ site.title }}","url":"{{ site.url }}/","logo":"{{ site.url }}/img/logo-600x60.png",
+ "publishingPrinciples":"{{ site.url }}/standards/","correctionsPolicy":"{{ site.url }}/corrections/","email":"{{ site.publisher.email }}",
+ "parentOrganization":{"@type":"Organization","name":"{{ site.publisher.name }}","url":"{{ site.publisher.url }}"}}
+</script>{% endblock %}
 {% block bodyclass %}home{% endblock %}
 {% block masthead %}
 <div class="util">
