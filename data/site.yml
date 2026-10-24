@@ -32,5 +32,5 @@ sections:
   - {slug: places, name: Places, group: magazine}
   - {slug: people, name: People, group: magazine}
 seo:
-  google_site_verification: ""   # paste the content value from Google Search Console's HTML tag method
+  google_site_verification: "rwposklIdAgNkCgBMyGXVe4sljD8-BbP52QXh2tMzR4"
   indexnow_key: "fecb80e34fca15bc75c578e19c4f47a6"
