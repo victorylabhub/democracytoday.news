@@ -11,7 +11,7 @@ This notice explains what information Democracy Today, published by Atlas Media 
 
 ## What we collect
 
-- **Newsletter sign-up.** If you choose to subscribe, we ask only for your email address, and we use it only to send you the newsletter. Netlify, which processes the form, may record technical information such as your IP address with each submission. You can unsubscribe at any time.
+- **Newsletter sign-up.** If you choose to subscribe, we ask only for your email address, and we use it only to send you the newsletter. Netlify, which processes the form, may record technical information such as your IP address with each submission. You may also sign up through a Google News prompt on our pages; in that case Google collects your email address and shares it with us so we can send you the newsletter. You can unsubscribe at any time.
 - **Messages you send us.** If you email us, we receive your email address and whatever you include in your message.
 - **Server logs.** Our hosting provider, Netlify, processes standard technical information, such as IP addresses and browser type, to deliver and secure the site.
 
