@@ -33,4 +33,5 @@ sections:
   - {slug: people, name: People, group: magazine}
 seo:
   google_site_verification: "rwposklIdAgNkCgBMyGXVe4sljD8-BbP52QXh2tMzR4"
+  swg_product_id: "CAow_Y_iCw:openaccess"   # Google Reader Revenue Manager
   indexnow_key: "fecb80e34fca15bc75c578e19c4f47a6"

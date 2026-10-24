@@ -21,6 +21,17 @@
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
 <link rel="preload" href="/fonts/source-serif-4-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/site.css">
+{% if site.seo and site.seo.swg_product_id %}<script async type="application/javascript" src="https://news.google.com/swg/js/v1/swg-basic.js"></script>
+<script>
+  (self.SWG_BASIC = self.SWG_BASIC || []).push( basicSubscriptions => {
+    basicSubscriptions.init({
+      type: "NewsArticle",
+      isPartOfType: ["Product"],
+      isPartOfProductId: "{{ site.seo.swg_product_id }}",
+      clientOptions: { theme: "light", lang: "en" },
+    });
+  });
+</script>{% endif %}
 {% block head %}{% endblock %}
 </head>
 <body class="{% block bodyclass %}{% endblock %}">

@@ -5,7 +5,7 @@ description: What information Democracy Today collects and how it is used.
 notice: "This Privacy Notice is pending legal review and may be updated."
 ---
 
-**Last updated: October 23, 2026.**
+**Last updated: October 24, 2026.**
 
 This notice explains what information Democracy Today, published by Atlas Media Network, LLC ("we"), collects when you use democracytoday.news.
 
@@ -15,11 +15,13 @@ This notice explains what information Democracy Today, published by Atlas Media 
 - **Messages you send us.** If you email us, we receive your email address and whatever you include in your message.
 - **Server logs.** Our hosting provider, Netlify, processes standard technical information, such as IP addresses and browser type, to deliver and secure the site.
 
+- **Google News tools.** Our pages load a script from Google's Reader Revenue Manager, which connects Democracy Today with Google News features. Google may process technical information, such as your IP address and browser details, and may set cookies when this script runs, as described in [Google's Privacy Policy](https://policies.google.com/privacy).
+
 We do not sell your personal information. We do not use advertising cookies or third-party advertising trackers on this site.
 
 ## Service providers
 
-The site is hosted by Netlify, Inc., which processes newsletter sign-ups submitted through the site's form on our behalf. If we use an email delivery service to send the newsletter, your email address will be shared with that service solely to deliver it.
+The site is hosted by Netlify, Inc., which processes newsletter sign-ups submitted through the site's form on our behalf. Google LLC provides the Reader Revenue Manager script described above. If we use an email delivery service to send the newsletter, your email address will be shared with that service solely to deliver it.
 
 ## Your choices and rights
 
