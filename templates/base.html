@@ -84,7 +84,7 @@
       <nav aria-label="Opinion"><h2>Opinion</h2><a href="/opinion/">Opinion</a></nav>
       <nav aria-label="Magazine sections"><h2>Magazine</h2>{% for s in sections if s.group == 'magazine' %}<a href="/{{ s.slug }}/">{{ s.name }}</a>{% endfor %}</nav>
       <nav aria-label="About"><h2>About</h2><a href="/about/">About Us</a><a href="/standards/">Standards &amp; Ethics</a><a href="/corrections/">Corrections</a><a href="/about/#contact">Contact</a></nav>
-      <nav aria-label="More"><h2>More</h2><a href="/store/">Store</a><a href="/newsletter/">Newsletter</a><a href="/live/">DT Live</a><a href="/privacy/">Privacy Notice</a><a href="/feed.xml">RSS</a></nav>
+      <nav aria-label="More"><h2>More</h2><a href="/store/">Store</a><a href="/newsletter/">Newsletter</a><a href="/live/">DT Live</a><a href="/privacy/">Privacy Notice</a><a href="/terms/">Terms of Service</a><a href="/feed.xml">RSS</a></nav>
     </div>
     <p class="own">Democracy Today is published by <strong>{{ site.publisher.name }}</strong>, {{ site.publisher.address }} · <a href="mailto:{{ site.publisher.email }}">{{ site.publisher.email }}</a> · <a href="{{ site.publisher.url }}" rel="noopener">atlasmedianetwork.org</a><br>
     {{ site.non_affiliation }} © {{ build_time.year }} {{ site.publisher.name }}.</p>
